@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  trip-service:
+    build: ./trip-service
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/tripdb
+      SPRING_PROFILES_ACTIVE: dev
+    depends_on:
+      - db
+      - config-server
+
+  user-service:
+    build: ./user-preference
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/userdb
+      SPRING_PROFILES_ACTIVE: dev
+    depends_on:
+      - db
+      - config-server
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  config-server:
+    image: springcloud/spring-cloud-config-server
+    ports:
+      - "8888:8888"
+    environment:
+      SPRING_CLOUD_CONFIG_SERVER_GIT_URI: ""
+      SPRING_CLOUD_CONFIG_SERVER_GIT_SEARCH_PATHS: "config"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
+    driver: local

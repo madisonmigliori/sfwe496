@@ -2,15 +2,9 @@
 Overview
 This project implements a cloud-native system using a microservices architecture to manage trips and user preferences. The system consists of three primary microservices:
 
-Config Server (port: 8888) – Manages environment-specific configurations (dev/prod).
-Trip Service (port: 8081) – Handles trip itineraries (CRUD operations for trips).
-User Service (port: 8082) – Manages user preferences and settings.
-Tech Stack
-✅ Backend: Spring Boot (Microservices)
-✅ Database: PostgreSQL (Local & Cloud Deployment)
-✅ Containerization: Docker & Docker Compose
-✅ Configuration Management: Spring Cloud Config Server
-✅ API Testing: Postman
+Config Server (port: 8071) – Manages environment-specific configurations (dev/prod).
+Trip Service (port: 8080) – Handles trip itineraries (CRUD operations for trips).
+User Service (port: 8081) – Manages user preferences and settings.
 
 ### Canonical Data Model & Microservices
 Trip Service: CRUD operations for trip itineraries.

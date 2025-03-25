@@ -25,12 +25,12 @@ public class TripController {
         return tripService.getAllTrips();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/trips/{id}")
     public Trip getTripById(@PathVariable Long id) {
         return tripService.getTripById(id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/trips/{id}")
     public void deleteTrip(@PathVariable Long id) {
         tripService.deleteTrip(id);
     }

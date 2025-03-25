@@ -22,7 +22,7 @@ WORKDIR /configserver
 COPY --from=build /configserver/target/configserver-0.0.1-SNAPSHOT.jar /configserver/config-server.jar
 
 # Expose the port for the Config Server
-EXPOSE 8888
+EXPOSE 8071
 
 # Set the entrypoint and make sure to use the correct path for the JAR file
 ENTRYPOINT ["java", "-jar", "/configserver/config-server.jar"]

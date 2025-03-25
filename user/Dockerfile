@@ -17,7 +17,7 @@ WORKDIR /user
 COPY --from=build /user/target/user-0.0.1-SNAPSHOT.jar /user/user-preference.jar
 
 
-EXPOSE 8080
+EXPOSE 8081
 
 
 ENTRYPOINT ["java", "-jar", "/user/user-preference.jar"]

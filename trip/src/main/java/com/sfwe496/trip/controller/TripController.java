@@ -11,6 +11,16 @@ import java.util.List;
 public class TripController {
     private final TripService tripService;
 
+    @Autowired
+    private Environment environment;
+
+    @GetMapping("/active-profile")
+    public String getActiveProfiles() {
+        String[] activeProfiles = environment.getActiveProfiles();
+        return "Active Profiles: " + Arrays.toString(activeProfiles);
+    }
+
+
     public TripController(TripService tripService) {
         this.tripService = tripService;
     }
@@ -25,12 +35,12 @@ public class TripController {
         return tripService.getAllTrips();
     }
 
-    @GetMapping("/trips/{id}")
+    @GetMapping("/{id}")
     public Trip getTripById(@PathVariable Long id) {
         return tripService.getTripById(id);
     }
 
-    @DeleteMapping("/trips/{id}")
+    @DeleteMapping("/{id}")
     public void deleteTrip(@PathVariable Long id) {
         tripService.deleteTrip(id);
     }

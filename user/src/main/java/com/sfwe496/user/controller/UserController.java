@@ -13,6 +13,16 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
+    @Autowired
+    private Environment environment;
+
+    @GetMapping("/active-profile")
+    public String getActiveProfiles() {
+        String[] activeProfiles = environment.getActiveProfiles();
+        return "Active Profiles: " + Arrays.toString(activeProfiles);
+    }
+
+
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());

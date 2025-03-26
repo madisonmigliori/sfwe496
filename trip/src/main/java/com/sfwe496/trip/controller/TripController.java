@@ -2,8 +2,13 @@ package com.sfwe496.trip.controller;
 
 import com.sfwe496.trip.service.TripService;
 import com.sfwe496.trip.model.Trip;
-import org.springframework.web.bind.annotation.*;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.core.env.Environment;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -38,6 +43,10 @@ public class TripController {
     @GetMapping("/{id}")
     public Trip getTripById(@PathVariable Long id) {
         return tripService.getTripById(id);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateTrip(@PathVariable Long id, @RequestBody Trip trip) {
+        return ResponseEntity.ok(tripService.updateTrip(id, trip));
     }
 
     @DeleteMapping("/{id}")

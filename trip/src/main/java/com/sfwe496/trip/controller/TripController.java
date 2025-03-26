@@ -45,7 +45,7 @@ public class TripController {
         return tripService.getTripById(id);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateTrip(@PathVariable Long id, @RequestBody Trip trip) {
+    public ResponseEntity<Trip> updateTrip(@PathVariable Long id, @RequestBody Trip trip) {
         return ResponseEntity.ok(tripService.updateTrip(id, trip));
     }
 

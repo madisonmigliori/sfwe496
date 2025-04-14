@@ -7,10 +7,10 @@ services:
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
-      POSTGRES_DB:       "semesterproject"
+      POSTGRES_DB: "semesterproject"
     volumes:
-        - ./init.sql:/docker-entrypoint-initdb.d/1-init.sql
-        - ./data.sql:/docker-entrypoint-initdb.d/2-data.sql
+      - ./init.sql:/docker-entrypoint-initdb.d/1-init.sql
+      - ./data.sql:/docker-entrypoint-initdb.d/2-data.sql
     networks:
       backend:
         aliases:
@@ -20,50 +20,106 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
   configserver:
     image: sfwe496/configserver
     ports:
-       - "8071:8071"
+      - "8071:8071"
     environment:
       ENCRYPT_KEY: "fje83Ki8403Iod87dne7Yjsl3THueh48jfuO9j4U2hf64Lo"
     networks:
-      backend: 
+      backend:
         aliases:
           - "configserver"
+
+  eurekaserver:
+    image: sfwe496/eurekaserver
+    ports:
+      - "8761:8761"
+    environment:
+      CONFIGSERVER_URI: "http://configserver:8071"
+    depends_on:
+      configserver:
+        condition: service_started
+    networks:
+      backend:
+        aliases:
+          - "eurekaserver"
+
+  gateway:
+    image: sfwe496/gatewayserver
+    ports:
+      - "8072:8072"
+    environment:
+      CONFIGSERVER_URI: "http://configserver:8071"
+      EUREKASERVER_URI: "http://localhost:8761/eureka/"
+    depends_on:
+      configserver:
+        condition: service_started
+      eurekaserver:
+        condition: service_started
+    networks:
+      backend:
+        aliases:
+          - "gateway"
+
   trip:
     image: sfwe496/trip
     environment:
       PROFILE: "prod"
       CONFIGSERVER_URI: "http://configserver:8071"
-      CONFIGSERVER_PORT:   "8071"
+      CONFIGSERVER_PORT: "8071"
       DATABASESERVER_PORT: "5432"
-      ENCRYPT_KEY:       "IMSYMMETRIC"
+      ENCRYPT_KEY: "IMSYMMETRIC"
+      EUREKASERVER_URI: "http://localhost:8761/eureka/"
     depends_on:
       database:
         condition: service_healthy
       configserver:
+        condition: service_started
+      eurekaserver:
         condition: service_started
     ports:
       - "8080:8080"
     networks:
       - backend
+
   user:
     image: sfwe496/user
     environment:
       PROFILE: "prod"
       CONFIGSERVER_URI: "http://configserver:8071"
-      CONFIGSERVER_PORT:   "8071"
+      CONFIGSERVER_PORT: "8071"
       DATABASESERVER_PORT: "5432"
-      ENCRYPT_KEY:       "IMSYMMETRIC"
+      ENCRYPT_KEY: "IMSYMMETRIC"
+      EUREKASERVER_URI: "http://localhost:8761/eureka/"
     depends_on:
       database:
         condition: service_healthy
       configserver:
         condition: service_started
+      eurekaserver:
+        condition: service_started
     ports:
       - "8081:8081"
     networks:
       - backend
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.1.4
+    command: start-dev --import-realm
+    environment:
+      KC_ADMIN: admin
+      KC_ADMIN_PASSWORD: admin
+    ports:
+    - "8084:8080"
+    volumes:
+    - ./realm-export.json:/opt/keycloak/data/import/realm-export.json
+    networks:
+      backend:
+        aliases:
+        - "keycloak"
+
 
 networks:
   backend:

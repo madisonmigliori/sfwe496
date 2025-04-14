@@ -1,0 +1,78 @@
+{
+  "realm": "sfwe496",
+  "enabled": true,
+  "registrationAllowed": true,
+  "resetPasswordAllowed": true,
+  "clients": [
+    {
+      "clientId": "gateway-service",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "gateway-secret",
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true
+    },
+    {
+      "clientId": "user-service",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "user-secret",
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true
+    },
+    {
+      "clientId": "trip-service",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "trip-secret",
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true
+    }
+  ],
+  "roles": {
+    "realm": [
+      {
+        "name": "USER"
+      },
+      {
+        "name": "ADMIN"
+      }
+    ]
+  },
+  "users": [
+    {
+      "username": "wilbur.wildcat",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password1",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [
+        "USER"
+      ]
+    },
+    {
+      "username": "wilma.wildcat",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password1",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [
+        "USER",
+        "ADMIN"
+      ]
+    }
+  ]
+}

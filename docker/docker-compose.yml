@@ -51,7 +51,7 @@ services:
       - "8072:8072"
     environment:
       CONFIGSERVER_URI: "http://configserver:8071"
-      EUREKASERVER_URI: "http://eurekaserver:8761/eureka"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
     depends_on:
       configserver:
         condition: service_started

@@ -16,15 +16,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/public/**").permitAll()
-                .requestMatchers("/api/user/**").hasRole("USER")
-                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+            .authorizeHttpRequests(authz -> authz
                 .anyRequest().authenticated()
             )
-            .oauth2ResourceServer(oauth2 -> oauth2.jwt());
-
+            .formLogin();
+    
         return http.build();
     }
+    
 }

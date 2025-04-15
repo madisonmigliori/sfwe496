@@ -22,7 +22,6 @@ public class UserContextFilter implements Filter {
 
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-e
         String correlationId = httpServletRequest.getHeader(UserContext.CORRELATION_ID);
         String authToken = httpServletRequest.getHeader(UserContext.AUTH_TOKEN);
 

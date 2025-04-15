@@ -22,7 +22,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
   instance:
-    preferIpAddress: true
+    preferIpAddress: false
 
 
 resilience4j:

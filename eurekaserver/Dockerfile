@@ -16,7 +16,7 @@ RUN mvn clean package
 # Step 2: Create the runtime image
 FROM amazoncorretto:17
 
-WORKDIR /configserver
+WORKDIR /eurekaserver
 
 # Copy the JAR file from the build stage
 COPY --from=build /eurekaserver/target/eurekaserver-0.0.1-SNAPSHOT.jar /eurekaserver/eureka-server.jar

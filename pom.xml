@@ -24,6 +24,7 @@
   <modules>
     <module>configserver</module>
     <module>eurekaserver</module>
+    <module>gatewayserver</module>
     <module>trip</module>
     <module>user</module>
   </modules>

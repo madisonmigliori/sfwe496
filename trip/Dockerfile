@@ -16,6 +16,6 @@ WORKDIR /trip
 
 COPY --from=build /trip/target/trip-0.0.1-SNAPSHOT.jar /trip/trip-service.jar
 
-EXPOSE 8080
+EXPOSE 8083
 
 ENTRYPOINT ["java", "-jar", "/trip/trip-service.jar"]

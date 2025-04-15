@@ -3,9 +3,11 @@ spring:
     name: eurekaserver
   config:
     import: "optional:configserver:"
+  cache:
+    type: caffeine
   cloud:
     config:
-      uri: http://localhost:8071
+      uri: http://configserver:8071
 
   
 

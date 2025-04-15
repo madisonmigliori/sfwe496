@@ -1,5 +1,4 @@
-version: '2.1'
-services:
+services: 
   database:
     image: postgres:latest
     ports:
@@ -52,7 +51,7 @@ services:
       - "8072:8072"
     environment:
       CONFIGSERVER_URI: "http://configserver:8071"
-      EUREKASERVER_URI: "http://localhost:8761/eureka/"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka"
     depends_on:
       configserver:
         condition: service_started
@@ -66,12 +65,12 @@ services:
   trip:
     image: sfwe496/trip
     environment:
-      PROFILE: "prod"
+      PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
       CONFIGSERVER_PORT: "8071"
       DATABASESERVER_PORT: "5432"
       ENCRYPT_KEY: "IMSYMMETRIC"
-      EUREKASERVER_URI: "http://localhost:8761/eureka/"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
     depends_on:
       database:
         condition: service_healthy
@@ -80,19 +79,19 @@ services:
       eurekaserver:
         condition: service_started
     ports:
-      - "8080:8080"
+      - "8083:8083"
     networks:
       - backend
 
   user:
     image: sfwe496/user
     environment:
-      PROFILE: "prod"
+      PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
       CONFIGSERVER_PORT: "8071"
       DATABASESERVER_PORT: "5432"
       ENCRYPT_KEY: "IMSYMMETRIC"
-      EUREKASERVER_URI: "http://localhost:8761/eureka/"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
     depends_on:
       database:
         condition: service_healthy
@@ -112,14 +111,13 @@ services:
       KC_ADMIN: admin
       KC_ADMIN_PASSWORD: admin
     ports:
-    - "8084:8080"
+      - "8084:8080"
     volumes:
-    - ./realm-export.json:/opt/keycloak/data/import/realm-export.json
+      - ./realm-export.json:/opt/keycloak/data/import/realm-export.json
     networks:
       backend:
         aliases:
-        - "keycloak"
-
+          - "keycloak"
 
 networks:
   backend:

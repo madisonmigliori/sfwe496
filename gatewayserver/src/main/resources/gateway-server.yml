@@ -1,0 +1,15 @@
+server:
+  port: 8072
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://USERSERVICE
+          predicates:
+            - Path=/user/**
+        - id: trip-service
+          uri: lb://TRIPSERVCE
+          predicates:
+            - Path=/trip/**

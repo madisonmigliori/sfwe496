@@ -11,8 +11,8 @@
 	<groupId>com.sfwe496</groupId>
 	<artifactId>configserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Configuration Server</name>
-	<description>Configuration Server</description>
+	<name>configserver</name>
+	<description>configserver</description>
 	<url/>
 	<licenses>
 		<license/>

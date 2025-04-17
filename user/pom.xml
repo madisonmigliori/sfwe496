@@ -11,8 +11,8 @@
 	<groupId>com.sfwe496</groupId>
 	<artifactId>user</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>User Preferences</name>
-	<description>User Preferences</description>
+	<name>user-service</name>
+	<description>user-service</description>
 	<url/>
 	<licenses>
 		<license/>

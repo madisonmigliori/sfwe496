@@ -13,8 +13,8 @@
     <groupId>com.sfwe496</groupId>
     <artifactId>trip</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Trip Itinerary</name>
-    <description>Trip Itinerary</description>
+    <name>trip-service</name>
+    <description>trip-service</description>
 
     <properties>
         <java.version>17</java.version>

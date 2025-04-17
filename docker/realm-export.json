@@ -46,6 +46,7 @@
     {
       "username": "wilbur.wildcat",
       "enabled": true,
+      "email": "wilbur.wildcat@example.com",  
       "emailVerified": true,
       "credentials": [
         {
@@ -61,6 +62,7 @@
     {
       "username": "wilma.wildcat",
       "enabled": true,
+      "email": "wilma.wildcat@example.com",  
       "emailVerified": true,
       "credentials": [
         {

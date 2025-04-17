@@ -20,7 +20,7 @@ public class UserContextGlobalFilter implements WebFilter {
         context.setCorrelationId(correlationId != null ? correlationId : java.util.UUID.randomUUID().toString());
         context.setAuthToken(authToken);
 
-        // Set the Correlation-ID in the response headers
+    
         exchange.getResponse().getHeaders().add(UserContext.CORRELATION_ID, context.getCorrelationId());
 
         return chain.filter(exchange);

@@ -13,3 +13,4 @@ spring:
           uri: lb://TRIPSERVCE
           predicates:
             - Path=/trip/**
+w

@@ -4,18 +4,18 @@ spring:
       discovery:
         locator:
           enabled: true
-          lowerCaseServiceId: true  # Ensures that service names are in lowercase
+          lowerCaseServiceId: true 
 
       routes:
-        # User Service route configuration
+
         - id: user-service
           uri: lb://user-service  
           predicates:
-            - Path=/user/**  # Match requests starting with /user/*
+            - Path=/user/**
           filters:
             - RewritePath=/user/(?<segment>.*), /$\{segment}  
 
-        # Trip Service route configuration with CircuitBreaker
+
         - id: trip-service
           uri: lb://trip-service  
           predicates:
@@ -24,9 +24,7 @@ spring:
             - name: CircuitBreaker 
               args:
                 name: tripServiceCB 
-                fallbackUri: forward:/fallback/trips 
-
-        # Fallback route for trips service
+                fallbackUri: forward:/fallback/trips
         - id: fallback-service
           uri: forward:/fallback/trips  
           predicates:

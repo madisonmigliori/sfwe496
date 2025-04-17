@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.4.4-SNAPSHOT</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.sfwe496</groupId>
 	<artifactId>user</artifactId>
@@ -87,12 +87,6 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-security</artifactId>
 </dependency>
-
-		<dependency>
-        <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-
 		   <dependency>
         <groupId>com.netflix.eureka</groupId>
         <artifactId>eureka-client</artifactId>
@@ -106,23 +100,6 @@
     <groupId>io.github.resilience4j</groupId>
     <artifactId>resilience4j-circuitbreaker</artifactId>
 </dependency>
- <dependency>
-        <groupId>org.keycloak</groupId>
-        <artifactId>keycloak-spring-boot-starter</artifactId>
-        <version>20.0.3</version> 
-    </dependency>
- <dependency>
-        <groupId>org.keycloak</groupId>
-        <artifactId>keycloak-spring-boot-starter</artifactId>
-        <version>20.0.3</version> 
-    </dependency>
-<!-- Spring Boot Starter Security -->
-<dependency>
-  <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-starter-security</artifactId>
-</dependency>
-
-<!-- Spring Cloud Eureka Discovery -->
 <dependency>
   <groupId>org.springframework.cloud</groupId>
   <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -135,9 +112,6 @@
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot-starter-security</artifactId>
 </dependency>
-
-
-<!-- Keycloak for Spring Boot 3+ -->
 <dependency>
   <groupId>org.keycloak</groupId>
   <artifactId>keycloak-spring-boot-starter</artifactId>
@@ -197,7 +171,7 @@
     <plugin>
     <groupId>io.fabric8</groupId>
     <artifactId>docker-maven-plugin</artifactId>
-    <version>0.42.0</version> <!-- You can check for the latest version on Maven Central -->
+    <version>0.42.0</version> 
     <executions>
         <execution>
             <goals>

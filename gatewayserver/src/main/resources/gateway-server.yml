@@ -6,11 +6,10 @@ spring:
     gateway:
       routes:
         - id: user-service
-          uri: lb://USERSERVICE
+          uri: lb://USER-SERVICE
           predicates:
             - Path=/user/**
         - id: trip-service
-          uri: lb://TRIPSERVCE
+          uri: lb://TRIP-SERVICE
           predicates:
             - Path=/trip/**
-w

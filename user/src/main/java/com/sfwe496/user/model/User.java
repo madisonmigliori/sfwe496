@@ -23,7 +23,7 @@ public class User {
     @Size(min = 8, message = "Password must be at least 8 characters long")
     private String password;
 
-    // ----- Constructors -----
+
     public User() {
     }
 
@@ -31,7 +31,7 @@ public class User {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.setPassword(password); // Hash password
+        this.setPassword(password); 
     }
     public Long getId() {
         return id;

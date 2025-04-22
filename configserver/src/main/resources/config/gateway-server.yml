@@ -11,16 +11,15 @@ spring:
       discovery:
         locator:
           enabled: true
-          lowerCaseServiceId: true
       routes:
         - id: user-service
-          uri: lb://user-service
+          uri: lb://USER-SERVICE
           predicates:
-            - Path=/user/**
+            - Path=/users/**
           filters:
-            - RewritePath=/user/(?<segment>.*), /$\{segment}
+            - RewritePath=/users/(?<segment>.*), /$\{segment}
         - id: trip-service
-          uri: lb://trip-service
+          uri: lb://TRIP-SERVICE
           predicates:
             - Path=/trips/**
           filters:

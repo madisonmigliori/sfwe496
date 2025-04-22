@@ -7,24 +7,31 @@ spring:
 
   cloud:
     config:
-      uri: http://localhost:8071
-
+      uri: http://localhost:8071  # Config server URI
     gateway:
+      discovery:
+        locator:
+          enabled: true  # Enables service discovery for routes
       routes:
         - id: user-service
-          uri: lb://USER-SERVICE
+          uri: lb://USER-SERVICE  # Service ID must match the registered service in Eureka
           predicates:
             - Path=/users/**
         - id: trip-service
-          uri: lb://TRIP-SERVICE
+          uri: lb://TRIP-SERVICE  # Service ID must match the registered service in Eureka
           predicates:
             - Path=/trips/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  # Eureka server URI
 
 management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: "*"  # Exposes all actuator endpoints
   endpoint:
     gateway:
-      enabled: true
+      enabled: true  # Enables the gateway actuator endpoint

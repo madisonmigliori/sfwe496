@@ -8,9 +8,9 @@ spring:
     config:
       uri: http://localhost:8071
     gateway:
-      discovery:
-        locator:
+      discovery.locator:
           enabled: true
+          lowerCaseServiceId: true
       routes:
         - id: user-service
           uri: lb://USER-SERVICE

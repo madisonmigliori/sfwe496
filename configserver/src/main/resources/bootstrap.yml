@@ -11,6 +11,10 @@ spring:
   
 server:
   port: 8071
+  error:
+    include-message: always
+    include-binding-errors: always
+    path: /error
 
 encrypt:
   key: fje83Ki8403Iod87dne7Yjsl3THueh48jfuO9j4U2hf64Lo 

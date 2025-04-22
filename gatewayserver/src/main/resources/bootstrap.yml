@@ -11,7 +11,8 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true  # Enables service discovery for routes
+          enabled: true
+          
       routes:
         - id: user-service
           uri: lb://USER-SERVICE  # Service ID must match the registered service in Eureka
@@ -21,6 +22,11 @@ spring:
           uri: lb://TRIP-SERVICE  # Service ID must match the registered service in Eureka
           predicates:
             - Path=/trips/**
+        - id: test-service
+          uri: http://httpbin.org
+          predicates:
+            - Path=/httpbin/**
+
 
 eureka:
   client:

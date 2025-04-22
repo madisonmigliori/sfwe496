@@ -13,3 +13,12 @@ spring:
           uri: lb://TRIP-SERVICE
           predicates:
             - Path=/trip/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" 
+  endpoint:
+    gateway:
+      enabled: true

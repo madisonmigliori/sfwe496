@@ -1,12 +1,12 @@
 spring:
   application:
-    name: config
+    name: configserver
   cloud:
     config:
       server:
         git:
           uri: https://github.com/madisonmigliori/sfwe496.git
-          searchPaths: config
+          searchPaths: configserver/src/main/resources/config
           clone-on-start: true
   
 server:

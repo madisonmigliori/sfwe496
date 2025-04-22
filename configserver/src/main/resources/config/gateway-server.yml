@@ -29,3 +29,9 @@ spring:
           uri: forward:/fallback/trips  
           predicates:
             - Path=/fallback/trips  
+            
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "gateway, health, info"

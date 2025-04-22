@@ -14,11 +14,11 @@ spring:
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/user/**
+            - Path=/users/**
         - id: trip-service
           uri: lb://TRIP-SERVICE
           predicates:
-            - Path=/trip/**
+            - Path=/trips/**
 
 management:
   endpoints:

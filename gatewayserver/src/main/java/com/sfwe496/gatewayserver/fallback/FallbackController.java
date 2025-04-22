@@ -14,7 +14,7 @@ public class FallbackController {
         return ResponseEntity.ok("Trip Service is temporarily unavailable. Please try again later.");
     }
 
-    @GetMapping("/user")
+    @GetMapping("/users")
     public ResponseEntity<String> userServiceFallback() {
         return ResponseEntity.ok("User Service is down. Please come back soon.");
     }

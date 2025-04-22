@@ -10,7 +10,6 @@ spring:
     gateway:
       discovery.locator:
           enabled: true
-          lowerCaseServiceId: true
       routes:
         - id: user-service
           uri: lb://USER-SERVICE
